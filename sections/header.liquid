@@ -1,7 +1,7 @@
 <header>
   <div class="header__title">
     <a href="{{ routes.root_url }}">
-      {{ 'hermosa-logo.svg' | inline_asset_content }}
+      <img src="{{ 'hermosa-logo.png' | asset_url }}" alt="Hermosa Logo" class="header__logo">
     </a>
   </div>
 
@@ -51,9 +51,10 @@
     text-decoration: none;
     display: block;
   }
-  .header__title svg {
+  .header__logo {
     height: 2.5rem;
     width: auto;
+    object-fit: contain;
   }
   header a {
     position: relative;
