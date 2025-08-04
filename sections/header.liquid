@@ -2,7 +2,7 @@
   <div class="header__title">
     <a href="{{ routes.root_url }}">
       {% if section.settings.logo != blank %}
-        <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ shop.name }}" class="header__logo">
+        <img src="{{ section.settings.logo | img_url: '400x' }}" alt="{{ shop.name }}" class="header__logo">
       {% else %}
         <span class="header__logo-text">hermosa</span>
       {% endif %}
@@ -34,7 +34,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
   
   header {
-    height: 3.5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,9 +56,10 @@
     display: block;
   }
   .header__logo {
-    height: 2.5rem;
+    height: 4rem;
     width: auto;
     object-fit: contain;
+    max-width: 300px;
   }
   .header__logo-text {
     font-family: 'Playfair Display', serif;
