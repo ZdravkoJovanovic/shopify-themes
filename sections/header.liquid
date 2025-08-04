@@ -1,7 +1,11 @@
 <header>
   <div class="header__title">
     <a href="{{ routes.root_url }}">
-      <span class="header__logo-text">hermosa</span>
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ shop.name }}" class="header__logo">
+      {% else %}
+        <span class="header__logo-text">hermosa</span>
+      {% endif %}
     </a>
   </div>
 
@@ -100,12 +104,17 @@
 
 {% schema %}
 {
-  "name": "t:general.header",
+  "name": "Header",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
     {
       "type": "link_list",
       "id": "menu",
-      "label": "t:labels.menu"
+      "label": "Navigation Menu"
     }
   ]
 }
