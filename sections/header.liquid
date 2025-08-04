@@ -1,4 +1,11 @@
 <header>
+  <div class="header__left">
+    <div class="header__slideshow">
+      <span class="slide-text active">{{ section.settings.slide_text_1 | default: "Hello World" }}</span>
+      <span class="slide-text">{{ section.settings.slide_text_2 | default: "Hello World" }}</span>
+    </div>
+  </div>
+
   <div class="header__title">
     <a href="{{ routes.root_url }}">
       {% if section.settings.logo != blank %}
@@ -101,7 +108,47 @@
     display: flex;
     gap: 1rem;
   }
+  .header__left {
+    display: flex;
+    align-items: center;
+  }
+  .header__slideshow {
+    position: relative;
+    width: 120px;
+    height: 25px;
+    overflow: hidden;
+  }
+  .slide-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #B0AC76;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .slide-text.active {
+    opacity: 1;
+  }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide-text');
+  let currentSlide = 0;
+
+  function showNextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+
+  setInterval(showNextSlide, 2000);
+});
+</script>
 
 {% schema %}
 {
@@ -131,6 +178,18 @@
       "unit": "px",
       "label": "Navigationsleisten Höhe",
       "default": 80
+    },
+    {
+      "type": "text",
+      "id": "slide_text_1",
+      "label": "Slideshow Text 1",
+      "default": "Hello World"
+    },
+    {
+      "type": "text",
+      "id": "slide_text_2", 
+      "label": "Slideshow Text 2",
+      "default": "Hello World"
     },
     {
       "type": "link_list",
