@@ -25,32 +25,61 @@
 </header>
 
 {% stylesheet %}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+  
   header {
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
+    background-color: #242222;
+    padding: 0 2rem;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    box-sizing: border-box;
   }
   .header__title {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+  .header__title a {
+    color: #FFFFFF !important;
+    text-decoration: none;
   }
   header a {
     position: relative;
     text-decoration: none;
-    color: var(--color-foreground);
+    color: #FFFFFF;
+  }
+  header .header__menu a {
+    color: #FFFFFF;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
   }
   header a sup {
     position: absolute;
     left: 100%;
     overflow: hidden;
     max-width: var(--page-margin);
+    color: #FFFFFF;
   }
   header svg {
     width: 2rem;
+    fill: #FFFFFF;
+    stroke: #FFFFFF;
+  }
+  header svg path {
+    fill: #FFFFFF;
+    stroke: #FFFFFF;
   }
   header .header__menu,
   header .header__icons {
