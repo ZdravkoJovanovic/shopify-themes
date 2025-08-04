@@ -1,13 +1,107 @@
-<div class="hero-image-section full-width">
-  {% if section.settings.hero_image != blank %}
-    <div class="hero-image-container">
-      <img src="{{ section.settings.hero_image | img_url: '1600x' }}" alt="Hero Image" class="hero-image">
-    </div>
-  {% else %}
-    <div class="hero-placeholder">
-      <p>Bild hier über Theme Editor hinzufügen</p>
-    </div>
-  {% endif %}
+<div class="hero-slideshow-section full-width">
+  <div class="slideshow-container">
+    {% assign slides = '' %}
+    {% if section.settings.slide_1_image != blank %}
+      {% assign slides = slides | append: '1,' %}
+    {% endif %}
+    {% if section.settings.slide_2_image != blank %}
+      {% assign slides = slides | append: '2,' %}
+    {% endif %}
+    {% if section.settings.slide_3_image != blank %}
+      {% assign slides = slides | append: '3,' %}
+    {% endif %}
+    
+    {% if slides != blank %}
+      <!-- Slide 1 -->
+      {% if section.settings.slide_1_image != blank %}
+        <div class="hero-slide active" data-slide="1">
+          <img src="{{ section.settings.slide_1_image | img_url: '1600x' }}" alt="Slide 1" class="hero-image">
+          <div class="hero-overlay">
+            <div class="hero-content">
+              {% if section.settings.small_text != blank %}
+                <p class="hero-small-text">{{ section.settings.small_text }}</p>
+              {% endif %}
+              {% if section.settings.main_text != blank %}
+                <h2 class="hero-main-text">{{ section.settings.main_text }}</h2>
+              {% endif %}
+              {% if section.settings.button_text != blank %}
+                <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="hero-button">
+                  {{ section.settings.button_text }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      <!-- Slide 2 -->
+      {% if section.settings.slide_2_image != blank %}
+        <div class="hero-slide" data-slide="2">
+          <img src="{{ section.settings.slide_2_image | img_url: '1600x' }}" alt="Slide 2" class="hero-image">
+          <div class="hero-overlay">
+            <div class="hero-content">
+              {% if section.settings.small_text != blank %}
+                <p class="hero-small-text">{{ section.settings.small_text }}</p>
+              {% endif %}
+              {% if section.settings.main_text != blank %}
+                <h2 class="hero-main-text">{{ section.settings.main_text }}</h2>
+              {% endif %}
+              {% if section.settings.button_text != blank %}
+                <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="hero-button">
+                  {{ section.settings.button_text }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      <!-- Slide 3 -->
+      {% if section.settings.slide_3_image != blank %}
+        <div class="hero-slide" data-slide="3">
+          <img src="{{ section.settings.slide_3_image | img_url: '1600x' }}" alt="Slide 3" class="hero-image">
+          <div class="hero-overlay">
+            <div class="hero-content">
+              {% if section.settings.small_text != blank %}
+                <p class="hero-small-text">{{ section.settings.small_text }}</p>
+              {% endif %}
+              {% if section.settings.main_text != blank %}
+                <h2 class="hero-main-text">{{ section.settings.main_text }}</h2>
+              {% endif %}
+              {% if section.settings.button_text != blank %}
+                <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="hero-button">
+                  {{ section.settings.button_text }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      <!-- Navigation -->
+      <div class="slideshow-navigation">
+        <button class="nav-arrow nav-prev">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        
+        <div class="color-indicator">
+          <span class="current-color">{{ section.settings.slide_1_color | default: "Schwarz" }}</span>
+        </div>
+        
+        <button class="nav-arrow nav-next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    {% else %}
+      <div class="hero-placeholder">
+        <p>Bilder über Theme Editor hinzufügen</p>
+      </div>
+    {% endif %}
+  </div>
 </div>
 
 <div class="highlights">
@@ -40,30 +134,132 @@
 </div>
 
 {% stylesheet %}
-  .hero-image-section {
-    display: grid;
-    grid-template-columns: var(--content-grid);
+  .hero-slideshow-section {
+    width: 100%;
     background-color: #f6f6f7;
-    padding: 72px 0;
+    padding: 0;
   }
 
-  .hero-image-container,
-  .hero-placeholder {
-    grid-column: 2;
+  .slideshow-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-slide {
+    width: 100%;
+    position: relative;
+    display: none;
+  }
+
+  .hero-slide.active {
+    display: block;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 0 24px;
+    background: rgba(0, 0, 0, 0.3);
   }
 
-  .hero-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+  .hero-content {
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  .hero-small-text {
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    opacity: 0.9;
+  }
+
+  .hero-main-text {
+    font-size: 3rem;
+    font-weight: 300;
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 30px 0;
+    line-height: 1.2;
+  }
+
+  .hero-button {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 12px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+  }
+
+  .hero-button:hover {
+    background: white;
+    color: black;
+  }
+
+  .slideshow-navigation {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    z-index: 100;
+  }
+
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .color-indicator {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .current-color {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   .hero-placeholder {
+    display: grid;
+    grid-template-columns: var(--content-grid);
+    padding: 72px 0;
     height: 400px;
     background-color: #e5e5e5;
     border: 2px dashed #ccc;
@@ -71,6 +267,19 @@
     color: #666;
     font-size: 1.1rem;
   }
+
+  .hero-placeholder p {
+    grid-column: 2;
+    text-align: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
 
   .highlights {
     display: grid;
@@ -122,19 +331,131 @@
   }
 {% endstylesheet %}
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const prevBtn = document.querySelector('.nav-prev');
+  const nextBtn = document.querySelector('.nav-next');
+  const colorIndicator = document.querySelector('.current-color');
+  
+  if (slides.length === 0) return;
+  
+  const colors = [
+    '{{ section.settings.slide_1_color | default: "Schwarz" }}',
+    '{{ section.settings.slide_2_color | default: "Beige" }}',
+    '{{ section.settings.slide_3_color | default: "Grau" }}'
+  ];
+  
+  let currentSlide = 0;
+  
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    if (slides[index]) {
+      slides[index].classList.add('active');
+      if (colorIndicator && colors[index]) {
+        colorIndicator.textContent = colors[index];
+      }
+    }
+  }
+  
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+  
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+  
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  
+  // Auto-advance every 5 seconds
+  setInterval(nextSlide, 5000);
+});
+</script>
+
 {% schema %}
 {
-  "name": "Hero Image",
+  "name": "Hero Slideshow",
   "settings": [
     {
+      "type": "header",
+      "content": "Slide 1"
+    },
+    {
       "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Bild"
+      "id": "slide_1_image",
+      "label": "Bild 1"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_color",
+      "label": "Farbe 1",
+      "default": "Schwarz"
+    },
+    {
+      "type": "header",
+      "content": "Slide 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_2_image",
+      "label": "Bild 2"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_color",
+      "label": "Farbe 2",
+      "default": "Beige"
+    },
+    {
+      "type": "header",
+      "content": "Slide 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_3_image",
+      "label": "Bild 3"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_color",
+      "label": "Farbe 3",
+      "default": "Grau"
+    },
+    {
+      "type": "header",
+      "content": "Text Overlay"
+    },
+    {
+      "type": "text",
+      "id": "small_text",
+      "label": "Kleiner Text (oben)",
+      "default": "ONLINE EXKLUSIV"
+    },
+    {
+      "type": "text",
+      "id": "main_text",
+      "label": "Haupttext (groß)",
+      "default": "The Ritual of Mehr"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "JETZT SHOPPEN"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     }
   ],
   "presets": [
     {
-      "name": "Hero Image Section",
+      "name": "Hero Slideshow",
       "category": "Image"
     }
   ]
