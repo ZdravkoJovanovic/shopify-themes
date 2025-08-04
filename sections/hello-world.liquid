@@ -103,83 +103,37 @@
     {% endif %}
   </div>
 </div>
-<div class="before-after-section">
-  <div class="before-after-grid">
-    <!-- Pair 1 -->
-    <div class="comparison-pair">
-      <div class="comparison-image">
-        {% if section.settings.before_1_image != blank %}
-          <img src="{{ section.settings.before_1_image | img_url: '600x' }}" alt="Vorher 1" class="comparison-img">
-        {% else %}
-          <div class="image-placeholder"></div>
-        {% endif %}
-        <div class="comparison-label before-label">Vorher</div>
-      </div>
-      <div class="comparison-image">
-        {% if section.settings.after_1_image != blank %}
-          <img src="{{ section.settings.after_1_image | img_url: '600x' }}" alt="Nachher 1" class="comparison-img">
-        {% else %}
-          <div class="image-placeholder"></div>
-        {% endif %}
-        <div class="comparison-label after-label">Nachher</div>
-      </div>
-    </div>
 
-    <!-- Pair 2 -->
-    <div class="comparison-pair">
-      <div class="comparison-image">
-        {% if section.settings.before_2_image != blank %}
-          <img src="{{ section.settings.before_2_image | img_url: '600x' }}" alt="Vorher 2" class="comparison-img">
-        {% else %}
-          <div class="image-placeholder"></div>
-        {% endif %}
-        <div class="comparison-label before-label">Vorher</div>
-      </div>
-      <div class="comparison-image">
-        {% if section.settings.after_2_image != blank %}
-          <img src="{{ section.settings.after_2_image | img_url: '600x' }}" alt="Nachher 2" class="comparison-img">
-        {% else %}
-          <div class="image-placeholder"></div>
-        {% endif %}
-        <div class="comparison-label after-label">Nachher</div>
-      </div>
-    </div>
-
-    <!-- Pair 3 -->
-    <div class="comparison-pair">
-      <div class="comparison-image">
-        {% if section.settings.before_3_image != blank %}
-          <img src="{{ section.settings.before_3_image | img_url: '600x' }}" alt="Vorher 3" class="comparison-img">
-        {% else %}
-          <div class="image-placeholder"></div>
-        {% endif %}
-        <div class="comparison-label before-label">Vorher</div>
-      </div>
-      <div class="comparison-image">
-        {% if section.settings.after_3_image != blank %}
-          <img src="{{ section.settings.after_3_image | img_url: '600x' }}" alt="Nachher 3" class="comparison-img">
-        {% else %}
-          <div class="image-placeholder"></div>
-        {% endif %}
-        <div class="comparison-label after-label">Nachher</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <style>
   body {
     overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh;
+  }
+  
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1;
+  }
+  
+  footer {
+    margin-top: auto;
   }
   
   .hero-slideshow-section {
-    width: 100%;
+    width: 100vw;
     background-color: #ffffff;
     padding: 0;
     margin: 0;
     border: 0;
     overflow-x: hidden;
     display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .slideshow-container {
@@ -334,107 +288,7 @@
 
 
 
-  .before-after-section {
-    margin: 0;
-    margin-top: {{ section.settings.spacing_to_hero | default: 0 }}px;
-    padding: 0 40px 80px;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    width: 100%;
-    border: 0;
-    box-sizing: border-box;
-    display: block;
-  }
 
-  .before-after-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .comparison-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-  }
-
-  .comparison-image {
-    position: relative;
-    aspect-ratio: 3/6;
-    overflow: visible;
-    border-radius: 8px;
-    background-color: #f0f0f0;
-    border: 1px solid #e0e0e0;
-  }
-
-  .comparison-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
-  }
-
-  .image-placeholder {
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-  }
-
-  .comparison-label {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    z-index: 2;
-  }
-
-  .before-label {
-    background-color: #242222;
-    color: #FFFFFF;
-  }
-
-  .after-label {
-    background-color: #242222;
-    color: #FFFFFF;
-  }
-
-  @media (max-width: 1024px) {
-    .before-after-grid {
-      grid-template-columns: 1fr;
-      gap: 60px;
-    }
-    
-    .comparison-pair {
-      gap: 30px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .before-after-section {
-      padding: 60px 20px;
-    }
-    
-    .comparison-pair {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-  }
 </style>
 
 <script>
@@ -557,50 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
-    },
-    {
-      "type": "header",
-      "content": "Before/After Vergleiche"
-    },
-    {
-      "type": "image_picker",
-      "id": "before_1_image",
-      "label": "Vorher Bild 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "after_1_image",
-      "label": "Nachher Bild 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "before_2_image",
-      "label": "Vorher Bild 2"
-    },
-    {
-      "type": "image_picker",
-      "id": "after_2_image",
-      "label": "Nachher Bild 2"
-    },
-    {
-      "type": "image_picker",
-      "id": "before_3_image",
-      "label": "Vorher Bild 3"
-    },
-    {
-      "type": "image_picker",
-      "id": "after_3_image",
-      "label": "Nachher Bild 3"
-    },
-    {
-      "type": "range",
-      "id": "spacing_to_hero",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Abstand zur Hero Slideshow",
-      "default": 0
     }
   ],
   "presets": [
