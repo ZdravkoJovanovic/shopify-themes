@@ -1,0 +1,18 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- HERMOSA Text -->
+  <text x="100" y="45" font-family="serif" font-size="24" font-weight="600" fill="white" text-anchor="middle" letter-spacing="2px">HERMOSA</text>
+  
+  <!-- Bottle icon in the middle of the O -->
+  <g transform="translate(125, 20)">
+    <!-- Bottle pump/cap -->
+    <rect x="-3" y="0" width="6" height="4" fill="white"/>
+    <rect x="-2" y="-2" width="4" height="2" fill="white"/>
+    
+    <!-- Bottle body -->
+    <path d="M -8,4 L -8,20 Q -8,22 -6,22 L 6,22 Q 8,22 8,20 L 8,4 Z" fill="white"/>
+    <rect x="-6" y="4" width="12" height="2" fill="white"/>
+  </g>
+  
+  <!-- BEAUTY BRAND Text -->
+  <text x="100" y="65" font-family="serif" font-size="8" font-weight="400" fill="white" text-anchor="middle" letter-spacing="4px">BEAUTY BRAND</text>
+</svg>

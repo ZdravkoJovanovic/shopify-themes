@@ -1,7 +1,7 @@
 <header>
   <div class="header__title">
     <a href="{{ routes.root_url }}">
-      <span class="header__logo-text">hermosa</span>
+      {{ 'hermosa-logo.svg' | inline_asset_content }}
     </a>
   </div>
 
@@ -51,17 +51,9 @@
     text-decoration: none;
     display: block;
   }
-  .header__logo {
+  .header__title svg {
     height: 2.5rem;
     width: auto;
-    object-fit: contain;
-  }
-  .header__logo-text {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.8rem;
-    letter-spacing: 0.1em;
-    color: #FFFFFF;
   }
   header a {
     position: relative;
