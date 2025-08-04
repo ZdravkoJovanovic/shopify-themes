@@ -1,7 +1,9 @@
 <header>
-  <h2 class="header__title">
-    {{ "hermosa" | link_to: routes.root_url }}
-  </h2>
+  <div class="header__title">
+    <a href="{{ routes.root_url }}">
+      <img src="{{ 'hermosa-logo.png' | asset_url }}" alt="hermosa" class="header__logo">
+    </a>
+  </div>
 
   <div class="header__menu">
     {% for link in section.settings.menu.links %}
@@ -28,7 +30,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
   
   header {
-    height: 5rem;
+    height: 3.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,14 +46,15 @@
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.8rem;
-    letter-spacing: 0.1em;
   }
   .header__title a {
-    color: #FFFFFF !important;
     text-decoration: none;
+    display: block;
+  }
+  .header__logo {
+    height: 2.5rem;
+    width: auto;
+    object-fit: contain;
   }
   header a {
     position: relative;
