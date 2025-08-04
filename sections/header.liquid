@@ -34,13 +34,13 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
   
   header {
-    height: 5rem;
+    min-height: {{ section.settings.logo_height | plus: 20 }}px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     background-color: #242222;
-    padding: 0 2rem;
+    padding: 10px 2rem;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     box-sizing: border-box;
@@ -56,10 +56,10 @@
     display: block;
   }
   .header__logo {
-    height: 4rem;
+    height: {{ section.settings.logo_height }}px;
     width: auto;
     object-fit: contain;
-    max-width: 300px;
+    max-width: 500px;
   }
   .header__logo-text {
     font-family: 'Playfair Display', serif;
@@ -111,6 +111,16 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 30,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Größe",
+      "default": 80
     },
     {
       "type": "link_list",
