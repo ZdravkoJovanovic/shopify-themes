@@ -104,32 +104,67 @@
   </div>
 </div>
 
-<div class="highlights">
-  <div class="highlight">
-    <h3>Key Concepts</h3>
-    <p class="highlight-description">
-      Shopify themes are a package of template files, building blocks, and supporting assets. Use these building blocks
-      to create modular, customizable themes.
-    </p>
-    <p>{{ 'Learn more about key concepts' | link_to: 'https://shopify.dev/docs/storefronts/themes/architecture' }}</p>
-  </div>
+<div class="before-after-section">
+  <div class="before-after-grid">
+    <!-- Pair 1 -->
+    <div class="comparison-pair">
+      <div class="comparison-image">
+        {% if section.settings.before_1_image != blank %}
+          <img src="{{ section.settings.before_1_image | img_url: '600x' }}" alt="Vorher 1" class="comparison-img">
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+        <div class="comparison-label before-label">Vorher</div>
+      </div>
+      <div class="comparison-image">
+        {% if section.settings.after_1_image != blank %}
+          <img src="{{ section.settings.after_1_image | img_url: '600x' }}" alt="Nachher 1" class="comparison-img">
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+        <div class="comparison-label after-label">Nachher</div>
+      </div>
+    </div>
 
-  <div class="highlight">
-    <h3>Liquid</h3>
-    <p class="highlight-description">
-      The Liquid templating language is the backbone of Shopify themes, and is used to load dynamic content on
-      storefronts. Extend Liquid objects to store and present custom data using metafields.
-    </p>
-    <p>{{ 'View the Liquid reference' | link_to: 'https://shopify.dev/docs/api/liquid' }}</p>
-  </div>
+    <!-- Pair 2 -->
+    <div class="comparison-pair">
+      <div class="comparison-image">
+        {% if section.settings.before_2_image != blank %}
+          <img src="{{ section.settings.before_2_image | img_url: '600x' }}" alt="Vorher 2" class="comparison-img">
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+        <div class="comparison-label before-label">Vorher</div>
+      </div>
+      <div class="comparison-image">
+        {% if section.settings.after_2_image != blank %}
+          <img src="{{ section.settings.after_2_image | img_url: '600x' }}" alt="Nachher 2" class="comparison-img">
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+        <div class="comparison-label after-label">Nachher</div>
+      </div>
+    </div>
 
-  <div class="highlight">
-    <h3>Best Practices</h3>
-    <p class="highlight-description">
-      To optimize your theme development experience, Shopify has established a set of best practices that you can refer
-      to when developing your theme and setting up your toolchains and processes.
-    </p>
-    <p>{{ 'Follow best practices' | link_to: 'https://shopify.dev/docs/storefronts/themes/best-practices' }}</p>
+    <!-- Pair 3 -->
+    <div class="comparison-pair">
+      <div class="comparison-image">
+        {% if section.settings.before_3_image != blank %}
+          <img src="{{ section.settings.before_3_image | img_url: '600x' }}" alt="Vorher 3" class="comparison-img">
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+        <div class="comparison-label before-label">Vorher</div>
+      </div>
+      <div class="comparison-image">
+        {% if section.settings.after_3_image != blank %}
+          <img src="{{ section.settings.after_3_image | img_url: '600x' }}" alt="Nachher 3" class="comparison-img">
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+        <div class="comparison-label after-label">Nachher</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -292,53 +327,92 @@
 
 
 
-  .highlights {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 50px;
+  .before-after-section {
+    padding: 80px 40px;
+    background-color: #f6f6f7;
   }
 
-  @media (max-width: 1100px) {
-    .highlights {
+  .before-after-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .comparison-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .comparison-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .comparison-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .comparison-label {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .before-label {
+    background-color: #242222;
+    color: #B0AC76;
+  }
+
+  .after-label {
+    background-color: #242222;
+    color: #B0AC76;
+  }
+
+  @media (max-width: 1024px) {
+    .before-after-grid {
       grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    
+    .comparison-pair {
+      gap: 30px;
     }
   }
 
-  .highlight {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 24px;
-    border-radius: 8px;
-    background-color: #eef3ff;
-    color: rgb(92, 95, 98);
-    line-height: 1.4;
-  }
-
-  .highlight > * + * {
-    margin-top: 1rem;
-  }
-
-  .highlight h3 {
-    font-size: 1rem;
-    color: rgb(32, 34, 35);
-  }
-
-  .highlight-description {
-    flex: 1 1;
-  }
-
-  .highlight a {
-    display: flex;
-    width: fit-content;
-    background-color: rgb(250, 251, 251);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 0px 0px inset, rgba(255, 255, 255, 0.9) 0px 2px 0px 0px inset;
-    border: 1px solid rgb(140, 145, 150);
-    border-radius: 4px;
-    color: rgb(92, 95, 98);
-    padding: 3px 10px 5px;
-    text-decoration: none;
+  @media (max-width: 768px) {
+    .before-after-section {
+      padding: 60px 20px;
+    }
+    
+    .comparison-pair {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
   }
 {% endstylesheet %}
 
@@ -462,6 +536,40 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Before/After Vergleiche"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_1_image",
+      "label": "Vorher Bild 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_1_image",
+      "label": "Nachher Bild 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_2_image",
+      "label": "Vorher Bild 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_2_image",
+      "label": "Nachher Bild 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_3_image",
+      "label": "Vorher Bild 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_3_image",
+      "label": "Nachher Bild 3"
     }
   ],
   "presets": [
