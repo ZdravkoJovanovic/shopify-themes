@@ -103,7 +103,6 @@
     {% endif %}
   </div>
 </div>
-
 <div class="before-after-section">
   <div class="before-after-grid">
     <!-- Pair 1 -->
@@ -177,6 +176,7 @@
     width: 100%;
     background-color: #ffffff;
     padding: 0;
+    margin: 0;
     overflow-x: hidden;
   }
 
@@ -333,10 +333,8 @@
 
 
   .before-after-section {
-    padding-top: {{ section.settings.spacing_to_hero | default: 0 }}px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 80px;
+    margin: 0;
+    padding: {{ section.settings.spacing_to_hero | default: 0 }}px 40px 80px;
     background-color: #ffffff;
     overflow-x: hidden;
     width: 100%;
