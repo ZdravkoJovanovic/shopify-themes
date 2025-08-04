@@ -171,7 +171,7 @@
 {% stylesheet %}
   .hero-slideshow-section {
     width: 100%;
-    background-color: #f6f6f7;
+    background-color: #ffffff;
     padding: 0;
   }
 
@@ -328,8 +328,11 @@
 
 
   .before-after-section {
-    padding: 30px 40px 80px;
-    background-color: transparent;
+    padding-top: {{ section.settings.spacing_to_hero }}px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    background-color: #ffffff;
   }
 
   .before-after-grid {
@@ -575,6 +578,16 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "image_picker",
       "id": "after_3_image",
       "label": "Nachher Bild 3"
+    },
+    {
+      "type": "range",
+      "id": "spacing_to_hero",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Abstand zur Hero Slideshow",
+      "default": 20
     }
   ],
   "presets": [
