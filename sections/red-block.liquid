@@ -1,0 +1,41 @@
+<div class="red-block-section">
+  <div class="red-block-container">
+    <!-- Leerer roter Block -->
+  </div>
+</div>
+
+<style>
+  .red-block-section {
+    width: 100vw;
+    background-color: #ff0000;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow-x: hidden;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .red-block-container {
+    width: 100%;
+    height: 91vh; /* 30% größer als 70vh der Hero-Slideshow */
+    min-height: 650px; /* 30% größer als 500px */
+    max-height: 1040px; /* 30% größer als 800px */
+    background-color: #ff0000;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Red Block",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Red Block",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
