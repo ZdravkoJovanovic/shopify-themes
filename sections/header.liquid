@@ -1,8 +1,8 @@
 <header>
   <div class="header__left">
     <div class="header__slideshow">
-      <span class="slide-text active">{{ section.settings.slide_text_1 | default: "Hello World" }}</span>
-      <span class="slide-text">{{ section.settings.slide_text_2 | default: "Hello World" }}</span>
+      <span class="slide-text active">{{ section.settings.slide_text_1 | default: "Gratis Versand ab 35 Euro" }}</span>
+      <span class="slide-text">{{ section.settings.slide_text_2 | default: "Lieferzeit 6 - 9 Werktage" }}</span>
     </div>
   </div>
 
@@ -114,7 +114,7 @@
   }
   .header__slideshow {
     position: relative;
-    width: 120px;
+    width: 220px;
     height: 25px;
     overflow: hidden;
   }
@@ -183,13 +183,13 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "slide_text_1",
       "label": "Slideshow Text 1",
-      "default": "Hello World"
+      "default": "Gratis Versand ab 35 Euro"
     },
     {
       "type": "text",
       "id": "slide_text_2", 
       "label": "Slideshow Text 2",
-      "default": "Hello World"
+      "default": "Lieferzeit 6 - 9 Werktage"
     },
     {
       "type": "link_list",
