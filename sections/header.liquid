@@ -34,13 +34,13 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
   
   header {
-    min-height: {{ section.settings.logo_height | plus: 20 }}px;
+    height: {{ section.settings.header_height }}px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     background-color: #242222;
-    padding: 10px 2rem;
+    padding: 0 2rem;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     box-sizing: border-box;
@@ -121,6 +121,16 @@
       "unit": "px",
       "label": "Logo Größe",
       "default": 60
+    },
+    {
+      "type": "range",
+      "id": "header_height",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Navigationsleisten Höhe",
+      "default": 80
     },
     {
       "type": "link_list",
