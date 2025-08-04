@@ -21,10 +21,22 @@
 </footer>
 
 {% stylesheet %}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
   footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
+    margin-top: auto;
+    padding: 2rem;
+    background-color: #f8f8f8;
   }
   footer a {
     text-decoration: none;
