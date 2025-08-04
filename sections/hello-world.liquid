@@ -1,4 +1,4 @@
-<div class="hero-slideshow-section full-width">
+<div class="hero-slideshow-section">
   <div class="slideshow-container">
     {% assign slides = '' %}
     {% if section.settings.slide_1_image != blank %}
@@ -177,7 +177,9 @@
     background-color: #ffffff;
     padding: 0;
     margin: 0;
+    border: 0;
     overflow-x: hidden;
+    display: block;
   }
 
   .slideshow-container {
@@ -334,11 +336,14 @@
 
   .before-after-section {
     margin: 0;
-    padding: {{ section.settings.spacing_to_hero | default: 0 }}px 40px 80px;
+    margin-top: {{ section.settings.spacing_to_hero | default: 0 }}px;
+    padding: 0 40px 80px;
     background-color: #ffffff;
     overflow-x: hidden;
     width: 100%;
+    border: 0;
     box-sizing: border-box;
+    display: block;
   }
 
   .before-after-grid {
